@@ -17,8 +17,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ENV LC_ALL en_US.UTF-8
 
 # 加入jre（docker好像并不支持解压此版本的压缩文件）
-ADD jdk-8u251-linux-x64.tar.gz /usr/local/lib
-# COPY jdk1.8.0_251/ /usr/local/lib/jdk1.8.0_251
+# ADD jdk-8u251-linux-x64.tar.gz /usr/local/lib
+COPY jdk1.8.0_251/ /usr/local/lib/jdk1.8.0_251
 # 加入JCE
 COPY UnlimitedJCEPolicyJDK8/*.jar /usr/local/lib/jdk1.8.0_251/lib/security/
 # 加入供jstatd监控使用的安全策略文件

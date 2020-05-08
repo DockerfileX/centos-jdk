@@ -41,7 +41,7 @@
 ## 4. 创建、运行并进入容器
 
 ```sh
-docker run --net=host --name centos-jdk -it nnzbz/centos-jdk /bin/sh
+docker run --net=host --name centos-jdk -it nnzbz/centos-jdk /bin/bash
 ```
 
 ## 5. 进入容器
@@ -72,4 +72,4 @@ nohup jstatd -J-Djava.rmi.server.hostname=<ip> -J-Dcom.sun.management.jmxremote.
 
 ## 7. jdk更新重新制作镜像
 
-从oracle官网下载最新的jdk8的文件，文件名为 `jdk-8uxxx-linux-x64.tar.gz` (其中xxx为jdk8的小版本号)，放入本级目录，将旧的文件删除，并打开 `Dockerfile` 文件，用新的小版本号全文替换旧的版本号，最后提交更新
+将jdk8旧版本的文件及目录删除 > 从oracle官网下载最新的jdk8的文件，文件名为 `jdk-8uxxx-linux-x64.tar.gz` (其中xxx为jdk8的小版本号) > 放入本级目录并解压 > 删除已经无用的压缩包 > 打开 `Dockerfile` 文件，用新的小版本号全文替换旧的版本号 > 提交更新
