@@ -16,19 +16,41 @@
 6. JAVA_HOME=/usr/local/lib/jdk1.8.0_xxx/
 7. jstatd
 
-## 3. 创建并运行容器
+## 3. 拉取与制作标签
+
+1. pull
+
+   在自动构建后，拉取下来
+
+   ```sh
+   docker pull nnzbz/centos-jdk
+   ```
+
+2. tag(注意修改**xxx**为当前版本号)
+
+   ```sh
+   docker tag nnzbz/centos-jdk:latest nnzbz/centos-jdk:xxx
+   ```
+
+3. push(注意修改**xxx**为当前版本号)
+
+   ```sh
+   docker push nnzbz/centos-jdk:xxx
+   ```
+
+## 4. 创建、运行并进入容器
 
 ```sh
-docker run -d --net=host --name centos-jdk -it nnzbz/centos-jdk /bin/sh
+docker run --net=host --name centos-jdk -it nnzbz/centos-jdk /bin/sh
 ```
 
-## 4. 进入容器
+## 5. 进入容器
 
 ```sh
 docker exec -it centos-jdk /bin/bash
 ```
 
-## 5. 如果要运行jstatd监控
+## 6. 如果要运行jstatd监控
 
 进入容器中，执行如下命令
 
@@ -48,6 +70,6 @@ nohup jstatd -J-Djava.rmi.server.hostname=<ip> -J-Dcom.sun.management.jmxremote.
 - jstatd默认端口号是1099，如果要自定义，用 ```-p``` 参数指定端口号
 - 运行命令后，可在宿主服务器运行 ```ss -anp | grep 1099``` 查看是否启动成功
 
-## 6. jdk更新重新制作镜像
+## 7. jdk更新重新制作镜像
 
 从oracle官网下载最新的jdk8的文件，文件名为 `jdk-8uxxx-linux-x64.tar.gz` (其中xxx为jdk8的小版本号)，放入本级目录，将旧的文件删除，并打开 `Dockerfile` 文件，用新的小版本号全文替换旧的版本号，最后提交更新
