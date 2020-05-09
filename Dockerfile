@@ -27,4 +27,3 @@ COPY jstatd.all.policy /usr/local/lib/
 # 设置环境变量
 ENV JAVA_HOME /usr/local/lib/jdk1.8.0_251
 ENV PATH $JAVA_HOME/bin:$PATH
-ENV CLASSPATH .:./lib:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
